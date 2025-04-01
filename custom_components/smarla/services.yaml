@@ -1,0 +1,38 @@
+swing_start:
+  fields:
+    device:
+      required: true
+      selector:
+        device:
+          integration: smarla
+    intensity:
+      example: "20"
+      required: false
+      default: 20
+      selector:
+        number:
+          min: 0
+          max: 100
+          step: 1
+          unit_of_measurement: '%'
+swing_stop:
+  fields:
+    device:
+      required: true
+      selector:
+        device:
+          integration: smarla
+swing_increase:
+  fields:
+    device:
+      required: true
+      selector:
+        device:
+          integration: smarla
+swing_decrease:
+  fields:
+    device:
+      required: true
+      selector:
+        device:
+          integration: smarla

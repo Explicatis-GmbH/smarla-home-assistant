@@ -1,0 +1,82 @@
+{
+    "entity": {
+        "sensor": {
+            "amplitude": {
+                "name": "Amplitude"
+            },
+            "period": {
+                "name": "Period"
+            },
+            "activity": {
+                "name": "Activity"
+            }
+        },
+        "number": {
+            "intensity": {
+                "name": "Intensity"
+            }
+        },
+        "switch": {
+            "swing_active": {
+                "name": "Swing"
+            },
+            "smartmode": {
+                "name": "Smart Mode"
+            }
+        }
+    },
+    "device_automation": {
+        "action_type": {
+          "swing_decrease": "Increase swing intensity",
+          "swing_increase": "Decrease swing intensity",
+          "swing_start": "Turn on oscillation",
+          "swing_stop": "Turn off oscillation"
+        }
+    },
+    "services": {
+        "swing_start": {
+            "name": "Start cradle oscillation",
+            "description": "Starts a cradles oscillation with adjustable swing intensity",
+            "fields": {
+                "device": {
+                    "name": "Device",
+                    "description": "The cradle"
+                },
+                "intensity": {
+                    "name": "Intensity",
+                    "description": "Target intensity for oscillation start"
+                }
+            }
+        },
+        "swing_stop": {
+            "name": "Stop cradle oscillation",
+            "description": "Stops a cradles oscillation",
+            "fields": {
+                "device": {
+                    "name": "Device",
+                    "description": "The cradle"
+                }
+            }
+        },
+        "swing_increase": {
+            "name": "Increase cradle swing intensity",
+            "description": "Increases a cradles swing intensity",
+            "fields": {
+                "device": {
+                    "name": "Device",
+                    "description": "The cradle"
+                }
+            }
+        },
+        "swing_decrease": {
+            "name": "Decrease cradles swing intensity",
+            "description": "Decreases a cradles swing intensity",
+            "fields": {
+                "device": {
+                    "name": "Device",
+                    "description": "The cradle"
+                }
+            }
+        }
+    }
+}
