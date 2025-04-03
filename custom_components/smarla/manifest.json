@@ -15,7 +15,7 @@
     "pysignalr"
   ],
   "requirements": [
-    "pysmarlaapi==0.2.2"
+    "pysmarlaapi==0.2.4"
   ],
-  "version": "0.2.1"
+  "version": "0.2.2"
 }
