@@ -23,7 +23,7 @@ async def validate_input(data):
     Data has the keys from STEP_USER_DATA_SCHEMA with values provided by the user.
     """
     try:
-        conn = Connection(url=HOST, token_str=data[CONF_ACCESS_TOKEN])
+        conn = Connection(url=HOST, token_b64=data[CONF_ACCESS_TOKEN])
     except ValueError:
         conn = None
 
