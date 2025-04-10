@@ -1,0 +1,28 @@
+{
+    "entity": {
+        "switch": {
+            "cradle": {
+                "default": "mdi:cradle"
+            },
+            "smartmode": {
+                "default": "mdi:refresh-auto"
+            }
+        },
+        "number": {
+            "intensity": {
+                "default": "mdi:sine-wave"
+            }
+        },
+        "sensor": {
+            "amplitude": {
+                "default": "mdi:sine-wave"
+            },
+            "period": {
+                "default": "mdi:sine-wave"
+            },
+            "activity": {
+                "default": "mdi:baby-face"
+            }
+        }
+    }
+}

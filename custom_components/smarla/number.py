@@ -10,7 +10,6 @@ from homeassistant.components.number import (
     NumberMode,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import PERCENTAGE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
@@ -34,7 +33,6 @@ NUMBER_TYPES: list[SmarlaNumberEntityDescription] = [
         property="intensity",
         native_max_value=100,
         native_min_value=0,
-        native_unit_of_measurement=PERCENTAGE,
         native_step=1,
         mode=NumberMode.SLIDER,
     ),
