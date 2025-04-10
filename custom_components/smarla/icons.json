@@ -1,9 +1,6 @@
 {
     "entity": {
         "switch": {
-            "cradle": {
-                "default": "mdi:cradle"
-            },
             "smartmode": {
                 "default": "mdi:refresh-auto"
             }

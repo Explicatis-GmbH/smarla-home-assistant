@@ -33,9 +33,6 @@
             }
         },
         "switch": {
-            "cradle": {
-                "name": "Federwiege"
-            },
             "smartmode": {
                 "name": "Automatik"
             }

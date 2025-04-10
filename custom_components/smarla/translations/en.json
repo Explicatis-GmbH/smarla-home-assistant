@@ -33,9 +33,6 @@
             }
         },
         "switch": {
-            "cradle": {
-                "name": "Cradle"
-            },
             "smartmode": {
                 "name": "Smart Mode"
             }

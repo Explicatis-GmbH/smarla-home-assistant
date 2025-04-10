@@ -24,7 +24,7 @@ class SmarlaSwitchEntityDescription(SwitchEntityDescription):
 NUMBER_TYPES: list[SmarlaSwitchEntityDescription] = [
     SmarlaSwitchEntityDescription(
         key="cradle",
-        translation_key="cradle",
+        name=None,
         service="babywiege",
         property="swing_active",
     ),
