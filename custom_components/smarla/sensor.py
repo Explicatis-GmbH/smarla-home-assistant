@@ -56,6 +56,13 @@ NUMBER_TYPES: list[SmarlaSensorEntityDescription] = [
         property="activity",
         state_class=SensorStateClass.MEASUREMENT,
     ),
+    SmarlaSensorEntityDescription(
+        key="swing_count",
+        translation_key="swing_count",
+        service="analyser",
+        property="swing_count",
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
 ]
 
 

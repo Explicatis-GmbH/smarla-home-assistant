@@ -22,6 +22,9 @@
             },
             "activity": {
                 "default": "mdi:baby-face"
+            },
+            "swing_count": {
+                "default": "mdi:counter"
             }
         }
     }

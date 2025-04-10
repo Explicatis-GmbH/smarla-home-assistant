@@ -22,6 +22,9 @@
             },
             "activity": {
                 "name": "Activity"
+            },
+            "swing_count": {
+                "name": "Swing count"
             }
         },
         "number": {
