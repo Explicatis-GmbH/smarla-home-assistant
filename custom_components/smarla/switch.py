@@ -1,27 +1,28 @@
 """Support for the Swing2Sleep Smarla switch entities."""
 
 from dataclasses import dataclass
+from typing import Any
 
 from pysmarlaapi import Federwiege
+from pysmarlaapi.federwiege.classes import Property
 
 from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
-from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-from . import SmarlaBaseEntity
-from .const import DOMAIN
+from . import FederwiegeConfigEntry
+from .entity import SmarlaBaseEntity
 
 
 @dataclass(frozen=True, kw_only=True)
 class SmarlaSwitchEntityDescription(SwitchEntityDescription):
-    """Class describing Swing2Sleep Smarla switch entities."""
+    """Class describing Swing2Sleep Smarla switch entity."""
 
     service: str
     property: str
 
 
-NUMBER_TYPES: list[SmarlaSwitchEntityDescription] = [
+SWITCHES: list[SmarlaSwitchEntityDescription] = [
     SmarlaSwitchEntityDescription(
         key="cradle",
         name=None,
@@ -39,59 +40,41 @@ NUMBER_TYPES: list[SmarlaSwitchEntityDescription] = [
 
 async def async_setup_entry(
     hass: HomeAssistant,
-    config_entry: ConfigEntry,
-    async_add_entities: AddEntitiesCallback,
+    config_entry: FederwiegeConfigEntry,
+    async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
-    """Set up the Smarla switch from config entry."""
-    federwiege = hass.data[DOMAIN][config_entry.entry_id]
-
-    entities: list[SmarlaSwitch] = []
-
-    for desc in NUMBER_TYPES:
-        entity = SmarlaSwitch(federwiege, desc)
-        entities.append(entity)
-
-    async_add_entities(entities)
+    """Set up the Smarla switches from config entry."""
+    federwiege = config_entry.runtime_data
+    async_add_entities(SmarlaSwitch(federwiege, desc) for desc in SWITCHES)
 
 
 class SmarlaSwitch(SmarlaBaseEntity, SwitchEntity):
     """Representation of Smarla switch."""
 
-    async def on_change(self, value):
-        """Notify ha when state changes."""
-        self.async_write_ha_state()
+    entity_description: SmarlaSwitchEntityDescription
+
+    _property: Property[bool]
 
     def __init__(
         self,
         federwiege: Federwiege,
-        description: SmarlaSwitchEntityDescription,
+        desc: SmarlaSwitchEntityDescription,
     ) -> None:
-        """Initialize an Smarla Switch."""
-        super().__init__(federwiege)
-        self.property = federwiege.get_service(description.service).get_property(
-            description.property
-        )
-        self.entity_description = description
-        self._attr_should_poll = False
-        self._attr_unique_id = f"{federwiege.serial_number}-{description.key}"
-
-    async def async_added_to_hass(self) -> None:
-        """Run when this Entity has been added to HA."""
-        await self.property.add_listener(self.on_change)
-
-    async def async_will_remove_from_hass(self) -> None:
-        """Entity being removed from hass."""
-        await self.property.remove_listener(self.on_change)
+        """Initialize a Smarla switch."""
+        prop = federwiege.get_property(desc.service, desc.property)
+        super().__init__(federwiege, prop)
+        self.entity_description = desc
+        self._attr_unique_id = f"{federwiege.serial_number}-{desc.key}"
 
     @property
     def is_on(self) -> bool:
         """Return the entity value to represent the entity state."""
-        return self.property.get()
+        return self._property.get()
 
-    async def async_turn_on(self) -> None:
+    def turn_on(self, **kwargs: Any) -> None:
         """Turn the switch on."""
-        self.property.set(True)
+        self._property.set(True)
 
-    async def async_turn_off(self) -> None:
+    def turn_off(self, **kwargs: Any) -> None:
         """Turn the switch off."""
-        self.property.set(False)
+        self._property.set(False)

@@ -1,21 +1,14 @@
 {
   "domain": "smarla",
   "name": "Swing2Sleep Smarla",
-  "codeowners": [
-    "@explicatis"
-  ],
+  "codeowners": ["@explicatis", "@rlint-explicatis"],
   "config_flow": true,
-  "dependencies": [],
   "documentation": "https://github.com/Explicatis-GmbH/smarla-home-assistant",
   "integration_type": "device",
   "iot_class": "cloud_push",
   "issue_tracker": "https://github.com/Explicatis-GmbH/smarla-home-assistant/issues",
-  "loggers": [
-    "pysmarlaapi",
-    "pysignalr"
-  ],
-  "requirements": [
-    "pysmarlaapi==0.4.0"
-  ],
+  "loggers": ["pysmarlaapi", "pysignalr"],
+  "quality_scale": "bronze",
+  "requirements": ["pysmarlaapi==0.7.2"],
   "version": "0.4.0"
 }
