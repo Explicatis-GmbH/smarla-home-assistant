@@ -10,5 +10,5 @@
   "loggers": ["pysmarlaapi", "pysignalr"],
   "quality_scale": "bronze",
   "requirements": ["pysmarlaapi==0.7.2"],
-  "version": "0.5.0"
+  "version": "0.5.1"
 }
