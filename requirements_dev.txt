@@ -1,4 +1,4 @@
 pre-commit==4.0.1
 ruff>=0.8
 homeassistant
-pysmarlaapi==0.7.2
+pysmarlaapi==0.8.2
